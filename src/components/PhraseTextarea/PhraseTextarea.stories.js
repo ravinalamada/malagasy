@@ -11,10 +11,9 @@ function HandleInputText() {
   return (
     <>
       <PhraseTextarea 
-        placeHolderText= {'word here'}
         multiline={true}
         numberOfLines={3}
-        inputValue={"I am read only"}
+        inputValue={"roambin'ny folo"}
         inputEditable={false} 
         />
         <PhraseTextarea 

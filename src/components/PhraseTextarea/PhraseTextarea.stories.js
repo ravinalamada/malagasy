@@ -1,10 +1,9 @@
 
 import React, {useState} from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import PhraseTextarea from './PhraseTextarea';
-import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace';
-import { color } from '@storybook/addon-knobs';
+
 
 function HandleInputText() {
   const [text, setText] = useState('');
@@ -32,5 +31,5 @@ function HandleInputText() {
 
 storiesOf('PhraseTextarea', module)
   .addDecorator(getnewStory => <View>{getnewStory()}</View>)
-  .add('controlledInputTextAndUncontrolledInputText', () => <HandleInputText />)
+  .add('controlledAndUncontrolledInputText', () => <HandleInputText />)
 

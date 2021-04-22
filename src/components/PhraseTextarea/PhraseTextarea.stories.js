@@ -5,30 +5,34 @@ import { storiesOf } from '@storybook/react-native';
 import PhraseTextarea from './PhraseTextarea';
 
 
-function HandleInputText() {
-  const [text, setText] = useState('');
+function HandleUncontrolledInput() {
 
   return (
-    <>
       <PhraseTextarea 
         multiline={true}
         numberOfLines={3}
-        inputValue={"roambin'ny folo"}
+        inputValue={"roa ambin'ny folo"}
         inputEditable={false} 
         />
+  )
+}
+
+function HandleControlledInput () {
+    const [text, setText] = useState('');
+
+  return (
         <PhraseTextarea 
-          placeHolderText= {'Inter here'}
+          placeHolderText= {'Enter here'}
           multiline={true}
           numberOfLines={3}
           inputValue={text}
           inputEditable={true}
           onChangeText={setText}
        />
-    </>
   )
 }
 
 storiesOf('PhraseTextarea', module)
   .addDecorator(getnewStory => <View>{getnewStory()}</View>)
-  .add('controlledAndUncontrolledInputText', () => <HandleInputText />)
-
+  .add('controlledInputText', () => <HandleControlledInput />)
+  .add('uncontrolledInputText', () => <HandleUncontrolledInput />)

@@ -2,15 +2,7 @@
 import React, {useState} from 'react';
 import { StyleSheet,Text, SafeAreaView, TextInput,} from 'react-native';
 
-export default function PhraseTextarea({placeHolderText, 
-  multiline, 
-  numberOfLines,
-  inputEditable,
-  onChangeText,
-  inputValue,
-}) {
-
-  const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   textAreaContainer: {
     backgroundColor: '#FFFFFF',
     borderColor: '#E5E5E5',
@@ -39,6 +31,13 @@ export default function PhraseTextarea({placeHolderText,
   }
 })
 
+export default function PhraseTextarea({placeHolderText, 
+  multiline, 
+  numberOfLines,
+  inputEditable,
+  onChangeText,
+  inputValue,
+}) {
 
   return (
     <SafeAreaView style={styles.textAreaContainer}>

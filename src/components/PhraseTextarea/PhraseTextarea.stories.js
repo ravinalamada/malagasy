@@ -1,9 +1,17 @@
 
 import React, {useState} from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import PhraseTextarea from './PhraseTextarea';
 
+const style = StyleSheet.create({
+  container: {
+    marginTop: 15,
+    marginBottom: 37,
+    marginLeft: 23,
+    marginRight: 23,
+  }
+})
 
 function HandleUncontrolledInput() {
 
@@ -33,6 +41,6 @@ function HandleControlledInput () {
 }
 
 storiesOf('PhraseTextarea', module)
-  .addDecorator(getnewStory => <View>{getnewStory()}</View>)
+  .addDecorator(getnewStory => <View style={style.container}>{getnewStory()}</View>)
   .add('controlledInputText', () => <HandleControlledInput />)
   .add('uncontrolledInputText', () => <HandleUncontrolledInput />)

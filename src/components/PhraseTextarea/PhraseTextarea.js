@@ -8,10 +8,6 @@ const styles = StyleSheet.create({
     borderColor: '#E5E5E5',
     borderWidth: 1,
     borderRadius: 3,
-    marginTop: 15,
-    marginBottom: 37,
-    marginLeft: 23,
-    marginRight: 23,
     opacity: 1.
 
   },

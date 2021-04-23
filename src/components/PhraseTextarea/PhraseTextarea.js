@@ -1,51 +1,42 @@
-// components/Task.js
-import React, {useState} from 'react';
-import { StyleSheet,Text, SafeAreaView, TextInput,} from 'react-native';
-
+import * as React from 'react';
+import {TextInput, SafeAreaView, StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
-  textAreaContainer: {
-    backgroundColor: '#FFFFFF',
+  container: {
+    height: 100,
+    marginVertical: 0,
+    marginHorizontal: 'auto',
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderStyle: 'solid',
     borderColor: '#E5E5E5',
     borderWidth: 1,
-    borderRadius: 3,
-    opacity: 1.
-
   },
-  controlledTextArea: {
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    fontSize: 20,
-    lineHeight: 24,
-    color: 'rgba(17, 24, 39, 0.5)',
-  },
-  unControlledTextArea: {
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    fontSize: 20,
-    lineHeight: 24,
+  input: {
     color: '#111827',
-  }
-})
-
-export default function PhraseTextarea({placeHolderText, 
-  multiline, 
-  numberOfLines,
-  inputEditable,
-  onChangeText,
-  inputValue,
+  },
+  textarea: {
+    color: '#111827',
+    maxWidth: 360,
+    marginHorizontal: 'auto',
+    fontSize: 20,
+    lineHeight: 24.3,
+  },
+});
+export default function PhraseTextarea({
+  phrase,
+  editable,
+  onChange = () => null,
 }) {
-
   return (
-    <SafeAreaView style={styles.textAreaContainer}>
-      <TextInput 
-        style={inputEditable ? styles.controlledTextArea : styles.unControlledTextArea}
-        textAlign={'center'}
-        placeholder={placeHolderText}
-        multiline={multiline}
-        numberOfLines={numberOfLines}
-        editable= {inputEditable}
-        value={inputValue}
-        onChangeText={(text) => onChangeText(text)}
+    <SafeAreaView style={styles.container}>
+      <TextInput
+        style={editable ? styles.input : styles.textarea}
+        value={phrase}
+        editable={editable}
+        onChangeText={onChange}
+        multiline={true}
+        placeholder={'Enter text'}
       />
     </SafeAreaView>
   );

@@ -13,34 +13,27 @@ const style = StyleSheet.create({
   }
 })
 
-function HandleUncontrolledInput() {
-
+function Edit() {
+  const [text, setText] = useState('');
   return (
-      <PhraseTextarea 
-        multiline={true}
-        numberOfLines={3}
-        inputValue={"roa ambin'ny folo"}
-        inputEditable={false} 
-        />
-  )
+    <PhraseTextarea
+      phrase={text}
+      editable={true}
+      onChange={input => setText(input)}
+    />
+  );
 }
-
-function HandleControlledInput () {
-    const [text, setText] = useState('');
-
-  return (
-        <PhraseTextarea 
-          placeHolderText= {'Enter here'}
-          multiline={true}
-          numberOfLines={3}
-          inputValue={text}
-          inputEditable={true}
-          onChangeText={setText}
-       />
-  )
-}
-
 storiesOf('PhraseTextarea', module)
-  .addDecorator(getnewStory => <View style={style.container}>{getnewStory()}</View>)
-  .add('controlledInputText', () => <HandleControlledInput />)
-  .add('uncontrolledInputText', () => <HandleUncontrolledInput />)
+  .addDecorator(story => <View style={style.container}>{story()}</View>)
+  .add('editable input', () => <Edit />)
+  .add('not editable phrase', () => (
+    <PhraseTextarea phrase={'a word word'} editable={false} />
+  ))
+  .add('not editable and longer', () => (
+    <PhraseTextarea
+      phrase={
+        'Longer phrase Longer phrase Longer phrase Longer phrase Longer phrase'
+      }
+      editable={false}
+    />
+  ));

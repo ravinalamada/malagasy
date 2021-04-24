@@ -18,17 +18,17 @@ const style = StyleSheet.create({
 storiesOf('ActionButton', module)
   .addDecorator(story => <View style={style.container}>{story()}</View>)
   .add('Learn button', () => (
-    <ActionButton onPress={() => alert('Learn')} buttonLabel={'Learn'} Icon={'→'} />
+    <ActionButton onPress={() => alert('Learn')} buttonLabel={'Learn'} />
         
   ))
   .add('Pick button', () => (
-    <ActionButton onPress={() => alert('Pick')} buttonLabel={'Pick'} Icon={'→'} />
+    <ActionButton onPress={() => alert('Pick')} buttonLabel={'Pick'} />
     
   ))
-  .add('Wrong button', () => (
-    <ActionButton onPress={() => alert('Wrong')} buttonLabel={'Wrong'} Icon={'X'} />
+  .add('incorrect button', () => (
+    <ActionButton onPress={() => alert('Wrong')} buttonLabel={'Wrong'} />
         
   ))
-  .add('Right button', () => (
-    <ActionButton onPress={() => alert('Right')} buttonLabel={'Right'} Icon={'☑'} />
+  .add('correct button', () => (
+    <ActionButton onPress={() => alert('Correct')} buttonLabel={'Correct'} />
   ))

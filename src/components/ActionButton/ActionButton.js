@@ -5,7 +5,7 @@ import CorrectIcon from '../assets/Icons/correct-icon.svg';
 import WrongIcon from '../assets/Icons/wrong-icon.svg'
 
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
         container: {
             flexDirection:'row',
             justifyContent: 'center',

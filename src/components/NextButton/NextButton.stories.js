@@ -1,24 +1,17 @@
-import { action } from '@storybook/addon-actions';
-import { text } from '@storybook/addon-knobs';
+
 import { storiesOf } from '@storybook/react-native';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import NextButton from './NextButton';
 
 storiesOf('NextButton', module)
-  .addDecorator((getStory) => <View>{getStory()}</View>)
+  .addDecorator((getStory) => <View style={{margin: 20}}>{getStory()}</View>)
   .add('Disabled Button', () => (
-    <NextButton onPress={alert('disalbed')} disabled={true}>
-      <Text>Add</Text>
-    </NextButton>
+    <NextButton buttonLabel={'Add'} disabled={true} />
   ))
   .add('enabled Button', () => (
-    <NextButton onPress={action('clicked-text')} disabled={false}>
-      <Text>Add</Text>
-    </NextButton>
+    <NextButton onPress={() => alert('Enabled button')} buttonLabel={'Add'} disabled={false} />
   ))
   .add('Next Button', () => (
-    <NextButton onPress={action('clicked-emoji')} disabled={false}>
-      <Text>Next</Text>
-    </NextButton>
+    <NextButton onPress={() => alert('Next Button')} buttonLabel={'Next'} disabled={false} />
   ));

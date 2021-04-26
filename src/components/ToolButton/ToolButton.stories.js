@@ -6,10 +6,7 @@ import ToolButton from './ToolButton' ;
 
 const style = StyleSheet.create({
   container: {
-    marginTop: 20,
-    marginBottom: 20,
-    marginLeft: 19,
-    marginRight: 20,
+    margin: 20,
   }
 })
 
@@ -32,5 +29,5 @@ storiesOf('ToolButton', module)
         
   ))
   .add('mode button', () => (
-    <ActionButton onPress={() => alert('mode')} buttonLabel={'mode'} />
+    <ToolButton onPress={() => alert('mode')} buttonLabel={'mode'} />
   ))

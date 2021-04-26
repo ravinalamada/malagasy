@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, TouchableHighlight, Text, Image, View, Button} from 'react-native';
+import {StyleSheet, TouchableHighlight} from 'react-native';
 import AddIcon from '../assets/Icons/add-icon.svg'
 import ModeIcon from '../assets/Icons/mode-icon.svg';
 import LearntIcon from '../assets/Icons/learnt-icon.svg'
@@ -8,14 +8,18 @@ import SeenIcon from '../assets/Icons/seen-icon.svg';
 
 export const styles = StyleSheet.create({
         container: {
+            backgroundColor: '#06B6D4',
+            width: 40,
+            height: 40,
+            borderRadius: 100,
             flexDirection:'row',
             justifyContent: 'center',
             alignItems:'center',
+            padding: 13,
         },
         Icon: {
-            width:16,
-            height:16,
-            marginLeft: 10,
+            width:14,
+            height:14,
         }
     })
 
@@ -42,7 +46,10 @@ function changeButtonIcons(buttonLabel) {
 export default function actionButton ({onPress, buttonLabel}) {
 
     return (
-          <TouchableHighlight onPress={onPress}>
+          <TouchableHighlight 
+            onPress={onPress}
+            style={styles.container}
+          >
               {changeButtonIcons(buttonLabel)}
           </TouchableHighlight>
     )

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {storiesOf} from '@storybook/react-native';
 import ActionButton from './ActionButton';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {storiesOf} from '@storybook/react-native';
 import SwitcherButton from './SwitcherButton';
@@ -12,11 +12,21 @@ const style = StyleSheet.create({
   },
 });
 
+function Language() {
+  const [isEn, setIsLan] = useState(true);
+
+  function toogleLang() {
+    setIsLan(!isEn);
+  }
+
+  return (
+    <View>
+      <SwitcherButton lang={isEn} onPress={toogleLang}></SwitcherButton>
+    </View>
+  );
+}
+
 storiesOf('SwitcherButton', module)
   .addDecorator(story => <View style={style.container}>{story()}</View>)
-  .add('Malagasy language', () => (
-    <SwitcherButton onPress={() => alert('Malagasy')} />
-  ))
-  .add('English language', () => (
-    <SwitcherButton onPress={() => alert('English')} />
-  ));
+  .add('Malagasy language', () => <Language />)
+  .add('English language', () => <Language />);

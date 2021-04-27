@@ -29,18 +29,22 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ({onPress}) {
+export default function ({onPress, lang}) {
   return (
-    <TouchableHighlight>
-      <View style={styles.button}>
-        <Text onPress={onPress} style={styles.text}>
-          EN
-        </Text>
-        <SwitcherIcon />
-        <Text onPress={onPress} style={styles.text}>
-          MA
-        </Text>
-      </View>
+    <TouchableHighlight onPress={onPress}>
+      {lang ? (
+        <View style={styles.button}>
+          <Text style={styles.text}>EN</Text>
+          <SwitcherIcon />
+          <Text style={styles.text}>MA</Text>
+        </View>
+      ) : (
+        <View style={styles.button}>
+          <Text style={styles.text}>MA</Text>
+          <SwitcherIcon />
+          <Text style={styles.text}>EN</Text>
+        </View>
+      )}
     </TouchableHighlight>
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 
-const style = StyleSheet.create({
+export const style = StyleSheet.create({
   text: {
     fontFamily: 'Inter',
     fontSize: 18,

@@ -7,6 +7,10 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    backgroundColor: '#FFFFFF',
+    borderColor: '#E5E5E5',
+    borderWidth: 1,
+    borderRadius: 3,
     paddingLeft: 16,
     paddingTop: 17,
     paddingBottom: 17,
@@ -26,7 +30,7 @@ export default function List({name}) {
   return (
     <View style={style.container}>
       <Text style={style.text}>{name}</Text>
-      <ActionButton buttonLabel={'Learn'} />
+      <ActionButton buttonLabel={'Learn'} onPress={() => alert(name)} />
     </View>
   );
 }

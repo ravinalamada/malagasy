@@ -8,6 +8,8 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import List from './List';
+import SectionHeading from '../SectionHeading/SectionHeading';
+
 const categoriesData = require('../../data/categories.json');
 const categoriesList = categoriesData.categories;
 
@@ -17,15 +19,6 @@ const style = StyleSheet.create({
     marginBottom: 29,
     marginLeft: 29,
     marginRight: 35,
-    backgroundColor: '#FFFFFF',
-    borderColor: '#E5E5E5',
-    borderWidth: 1,
-    borderRadius: 3,
-  },
-  separator: {
-    flex: 1,
-    height: 1,
-    backgroundColor: '#E5E5E5',
   },
 });
 
@@ -37,10 +30,14 @@ function DisplayEnCat() {
     <SafeAreaView>
       <KeyboardAvoidingView>
         <SectionList
-          sections={[{title: 'List', data: categories}]}
-          renderItem={({item, index}) => <List name={item} />}
+          sections={[{title: 'Select a category:', data: categories}]}
+          renderSectionHeader={({section}) => (
+            <SectionHeading title={section.title} />
+          )}
+          renderItem={({item, index}) => (
+            <List style={style.container} name={item} />
+          )}
           KeyExtractor={item => item.id}
-          ItemSeparatorComponent={() => <View style={style.separator} />}
         />
       </KeyboardAvoidingView>
     </SafeAreaView>

@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import ActionButton from '../ActionButton/ActionButton';
+// import ListItem from '../'
 
 const style = StyleSheet.create({
   container: {
@@ -27,10 +28,5 @@ const style = StyleSheet.create({
 });
 
 export default function List({name}) {
-  return (
-    <View style={style.container}>
-      <Text style={style.text}>{name}</Text>
-      <ActionButton buttonLabel={'Learn'} onPress={() => alert(name)} />
-    </View>
-  );
+  return <View style={style.container}></View>;
 }

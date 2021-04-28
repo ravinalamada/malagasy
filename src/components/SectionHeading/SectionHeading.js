@@ -8,6 +8,7 @@ export const style = StyleSheet.create({
     lineHeight: 22,
     fontWeight: '600',
     color: '#111827',
+    paddingBottom: 15,
   },
 });
 

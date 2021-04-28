@@ -7,7 +7,10 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 20,
+    paddingLeft: 16,
+    paddingTop: 17,
+    paddingBottom: 17,
+    paddingRight: 20,
   },
   text: {
     fontFamily: 'Inter',
@@ -23,7 +26,11 @@ export default function ListItem({name}) {
     <View style={style.container}>
       <Text style={style.text}>{name}</Text>
       <ActionButton
-        buttonLabel={name === 'Food' ? 'Learn' : 'Pick'}
+        buttonLabel={
+          name === 'Food' || name === 'Sakafo' || name === 'Select a category'
+            ? 'Learn'
+            : 'Pick'
+        }
         onPress={() => alert(name)}
       />
     </View>

@@ -34,9 +34,7 @@ function DisplayEnCat() {
           renderSectionHeader={({section}) => (
             <SectionHeading title={section.title} />
           )}
-          renderItem={({item, index}) => (
-            <List style={style.container} name={item} />
-          )}
+          renderItem={({item, index}) => <List name={item} />}
           KeyExtractor={item => item.id}
         />
       </KeyboardAvoidingView>
@@ -55,7 +53,6 @@ function DisplayMalCat() {
           sections={[{title: 'List', data: categories}]}
           renderItem={({item}) => <List name={item} />}
           KeyExtractor={item => item}
-          ItemSeparatorComponent={() => <View style={style.separator} />}
         />
       </KeyboardAvoidingView>
     </SafeAreaView>

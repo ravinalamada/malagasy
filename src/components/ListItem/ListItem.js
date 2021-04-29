@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
-import ActionButton, {styles} from '../ActionButton/ActionButton';
+import ActionButton from '../ActionButton/ActionButton';
 
 const style = StyleSheet.create({
   container: {
@@ -21,6 +21,7 @@ const style = StyleSheet.create({
     color: '#111827',
   },
 });
+
 export default function ListItem({name}) {
   return (
     <View style={style.container}>
@@ -28,8 +29,8 @@ export default function ListItem({name}) {
       <ActionButton
         buttonLabel={
           name === 'Food' || name === 'Sakafo' || name === 'Select a category'
-            ? 'Learn'
-            : 'Pick'
+            ? 'Pick'
+            : 'Learn'
         }
         onPress={() => alert(name)}
       />

@@ -1,16 +1,23 @@
 import React, {useContext} from 'react';
 import {StyleSheet, View} from 'react-native';
+import {Link} from 'react-router-native';
 import ToolButtom from '../ToolButton/ToolButton';
 import SwitcherButton from '../SwitcherButtton/SwitcherButton';
 import CurrentList from '../CurrentList';
 import {Context} from '../../util/GlobalContext';
 
 const style = StyleSheet.create({
-  container: {
-    marginTop: 35,
-    marginLeft: 23,
-    marginBottom: 66,
-    marginRight: 23,
+  darkModeContainer: {
+    backgroundColor: '#1F232C',
+    paddingTop: 35,
+    paddingLeft: 23,
+    paddingRight: 23,
+  },
+  lightModeContainer: {
+    backgroundColor: '#F9F9F9',
+    paddingTop: 35,
+    paddingLeft: 23,
+    paddingRight: 23,
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -20,19 +27,24 @@ const style = StyleSheet.create({
 });
 
 const Home = () => {
-  const {toogleLang, toogleMode} = useContext(Context);
+  const {isLightMode, toogleLang, toogleMode} = useContext(Context);
 
   return (
-    <View style={style.container}>
-      <View style={style.buttonContainer}>
-        <ToolButtom buttonLabel={'add'} />
-        <SwitcherButton onPress={toogleLang} />
-        <ToolButtom buttonLabel={'seen'} />
-        <ToolButtom buttonLabel={'learnt'} />
-        <ToolButtom buttonLabel={'mode'} onPress={toogleMode} />
+    <Link to="/">
+      <View
+        style={
+          isLightMode ? style.lightModeContainer : style.darkModeContainer
+        }>
+        <View style={style.buttonContainer}>
+          <ToolButtom buttonLabel={'add'} />
+          <SwitcherButton onPress={toogleLang} />
+          <ToolButtom buttonLabel={'seen'} />
+          <ToolButtom buttonLabel={'learnt'} />
+          <ToolButtom buttonLabel={'mode'} onPress={toogleMode} />
+        </View>
+        <CurrentList />
       </View>
-      <CurrentList />
-    </View>
+    </Link>
   );
 };
 

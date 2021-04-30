@@ -1,17 +1,16 @@
-import React, {useContext} from 'react';
-import {StyleSheet, View} from 'react-native';
-import ReactDOM from 'react-dom';
-import {BrowserRouter as Router} from 'react-router-dom';
+import React from 'react';
+import {NativeRouter, Route, Link} from 'react-router-native';
 import Home from './src/components/Home/Home';
+import Test from './src/components/Test';
+
 import {GlobalContextProvider} from './src/util/GlobalContext';
-import {Context} from './src/util/GlobalContext';
-
 const App = () => {
-  const {isEn} = useContext(Context);
-
   return (
     <GlobalContextProvider>
-      <Home style={{backgroundColor: isEn ? '#F9F9F9' : '#1F232C'}} />
+      <NativeRouter>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/:name" component={Test} />
+      </NativeRouter>
     </GlobalContextProvider>
   );
 };

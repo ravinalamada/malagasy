@@ -18,7 +18,13 @@
     "react-native-dev-menu": "^4.0.2",
     "react-native-svg": "^12.1.1",
     "react-native-svg-transformer": "^0.14.3",
-    "react-native-svg-uri": "^1.2.3"
+    "react-native-svg-uri": "^1.2.3",
+    "react-redux": "^7.2.4",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-router-native": "^5.2.0",
+    "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, TouchableHighlight, View, Text} from 'react-native';
 import SwitcherIcon from '../assets/Icons/switcher-icon.svg';
-
+import {Contex, Context} from '../../util/GlobalContext';
 const styles = StyleSheet.create({
   button: {
     backgroundColor: '#06B6D4',
@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     paddingRight: 8.67,
     paddingBottom: 11.22,
     borderRadius: 30,
+    marginEnd: 10,
   },
   Icon: {
     width: 16.93,
@@ -30,9 +31,10 @@ const styles = StyleSheet.create({
 });
 
 export default function ({onPress, lang}) {
+  const {isEn} = useContext(Context);
   return (
     <TouchableHighlight onPress={onPress}>
-      {lang ? (
+      {isEn || lang ? (
         <View style={styles.button}>
           <Text style={styles.text}>EN</Text>
           <SwitcherIcon />

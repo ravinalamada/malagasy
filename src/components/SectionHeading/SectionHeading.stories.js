@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, SectionList} from 'react-native';
 import {storiesOf} from '@storybook/react-native';
-import SectionHeading, {ListItem} from './SectionHeading';
+import SectionHeading from './SectionHeading';
 
 const style = StyleSheet.create({
   container: {

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import ActionButton from '../ActionButton/ActionButton';
+import {Context} from '../../util/GlobalContext';
 
 const style = StyleSheet.create({
   container: {
@@ -23,16 +24,20 @@ const style = StyleSheet.create({
 });
 
 export default function ListItem({name}) {
+  const {isLightMode} = useContext(Context);
+
   return (
     <View style={style.container}>
-      <Text style={style.text}>{name}</Text>
+      <Text style={(style.text, {color: isLightMode ? '#111827' : '#FFFFFF'})}>
+        {name}
+      </Text>
+
       <ActionButton
         buttonLabel={
           name === 'Food' || name === 'Sakafo' || name === 'Select a category'
             ? 'Pick'
             : 'Learn'
         }
-        onPress={() => alert(name)}
       />
     </View>
   );

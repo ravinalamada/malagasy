@@ -12,12 +12,14 @@ export const style = StyleSheet.create({
     paddingTop: 35,
     paddingLeft: 23,
     paddingRight: 23,
+    height: '100%',
   },
   lightModeContainer: {
     backgroundColor: '#F9F9F9',
     paddingTop: 35,
     paddingLeft: 23,
     paddingRight: 23,
+    height: '100%',
   },
   buttonContainer: {
     flexDirection: 'row',

@@ -1,16 +1,15 @@
 import React, {useContext} from 'react';
 import {View} from 'react-native';
-// import {Context} from '../../util/GlobalContext';
 import ListItem from '../ListItem/ListItem';
-// import ToolButtom from '../ToolButton/ToolButton';
-// import {style} from '../Home/Home';
-// import SwitcherButton from '../SwitcherButtton/SwitcherButton';
+import {Context} from '../../util/GlobalContext';
 
-export default function LearningScreen({name}) {
-  //   const {isLightMode, toogleLang, toogleMode} = useContext(Context);
-
+export default function LearningScreen({name, onRowPress}) {
+  const {isLightMode} = useContext(Context);
   return (
-    <View>
+    <View
+      style={{
+        backgroundColor: isLightMode ? '#FFFFFF' : '#111827',
+      }}>
       <ListItem name={name} />
     </View>
   );

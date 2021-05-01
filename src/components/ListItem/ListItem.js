@@ -24,20 +24,20 @@ const style = StyleSheet.create({
 });
 
 export default function ListItem({name}) {
-  const {isLightMode} = useContext(Context);
+  const {isLightMode, toogleNextButon} = useContext(Context);
 
   return (
     <View style={style.container}>
       <Text style={(style.text, {color: isLightMode ? '#111827' : '#FFFFFF'})}>
         {name}
       </Text>
-
       <ActionButton
         buttonLabel={
           name === 'Food' || name === 'Sakafo' || name === 'Select a category'
-            ? 'Pick'
-            : 'Learn'
+            ? 'Learn'
+            : 'Pick'
         }
+        onPress={toogleNextButon}
       />
     </View>
   );

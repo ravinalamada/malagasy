@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, TouchableHighlight} from 'react-native';
+import {Link} from 'react-router-native';
 import AddIcon from '../assets/Icons/add-icon.svg';
 import ModeIcon from '../assets/Icons/mode-icon.svg';
 import LearntIcon from '../assets/Icons/learnt-icon.svg';

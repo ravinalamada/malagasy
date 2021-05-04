@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {
   StyleSheet,
   SectionList,
@@ -26,41 +26,22 @@ export default function CurrentLearningScreen() {
     isEn,
     isLightMode,
     isNextPhrase,
+    phrasesArr,
     toogleLang,
     toogleMode,
+    randomisedDataToDisplay,
     toogleNextButon,
   } = useContext(Context);
-  const [phrasesArr, setPhrasesArr] = useState([]);
+
   const {catName} = useParams();
-  const catNameToDisplay = category.find(cat => cat.name.en == catName);
+  const catNameToDisplay = category.find(cat => cat.name.en === catName);
   const catId = catNameToDisplay.phrasesIds;
   const str = catId[0];
   const delLastChar = str.substring(0, 5);
   const phrases = phrasesList.filter(phrase => phrase.id.includes(delLastChar));
-  function randomisedDataToDisplay() {
-    const randomPhrases = phrases[Math.floor(Math.random() * phrases.length)];
-    const opt1 = phrases[Math.floor(Math.random() * phrases.length)];
-    const opt2 = phrases[Math.floor(Math.random() * phrases.length)];
-    const opt3 = phrases[Math.floor(Math.random() * phrases.length)];
-    console.log(opt3);
-    const randomAnswers = [randomPhrases.name, opt1.name, opt2.name, opt3.name];
-    randomAnswers.sort(() => {
-      return 0.5 - Math.random();
-    });
-    const randomQuestions = phrases[Math.floor(Math.random() * phrases.length)];
-
-    //Initialized the quizData that will be used later
-    const phrasesObj = {
-      answerOptions: randomAnswers,
-      questions: randomQuestions,
-      answers: randomPhrases.name,
-    };
-
-    setPhrasesArr(phrasesObj);
-  }
 
   useEffect(() => {
-    randomisedDataToDisplay();
+    randomisedDataToDisplay(phrases);
   }, []);
 
   const answersData =
@@ -68,17 +49,7 @@ export default function CurrentLearningScreen() {
     phrasesArr.answerOptions !== undefined &&
     phrasesArr.answerOptions;
 
-  // console.log(answersData);
-
-  const questionsData =
-    phrasesArr !== [] &&
-    phrasesArr.questions !== undefined &&
-    phrasesArr.questions;
-
   if (!answersData) {
-    return null;
-  }
-  if (!questionsData) {
     return null;
   }
 
@@ -100,9 +71,7 @@ export default function CurrentLearningScreen() {
       style={isLightMode ? style.lightModeContainer : style.darkModeContainer}>
       <KeyboardAvoidingView>
         <View style={style.buttonContainer}>
-          <ToolButtom buttonLabel={'back'} onPress={randomisedDataToDisplay}>
-            <Link to="/" />
-          </ToolButtom>
+          <Link to="/" component={ToolButtom} buttonLabel={'back'} />
           <ToolButtom buttonLabel={'mode'} onPress={toogleMode} />
           <SwitcherButton onPress={toogleLang} />
         </View>
@@ -116,7 +85,9 @@ export default function CurrentLearningScreen() {
         <SectionHeading title={isEn ? `The phares:` : 'fehezanteny:'} />
         <PhraseTextArea
           editable={false}
-          phrase={isEn ? questionsData.name.mg : questionsData.name.en}
+          phrase={
+            isEn ? phrasesArr.answers.name.mg : phrasesArr.answers.name.en
+          }
         />
         <SectionList
           sections={[
@@ -129,18 +100,18 @@ export default function CurrentLearningScreen() {
             <SectionHeading title={section.title} />
           )}
           renderItem={({item}) => (
-            <LearningScreen
-              name={isEn ? item.en : item.mg}
-              onRowPress={toogleNextButon}
-            />
+            <LearningScreen name={isEn ? item.name.en : item.name.mg} />
           )}
-          KeyExtractor={item => item}
+          KeyExtractor={item => item.id}
           ItemSeparatorComponent={() => <View style={styles.separator} />}
         />
       </KeyboardAvoidingView>
       <View style={styles.button}>
         {isNextPhrase && (
-          <NextButton buttonLabel={'Next'} onPress={randomisedDataToDisplay} />
+          <NextButton
+            buttonLabel={'Next'}
+            onPress={() => randomisedDataToDisplay(phrases)}
+          />
         )}
       </View>
     </SafeAreaView>

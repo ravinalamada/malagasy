@@ -12,6 +12,8 @@ function GlobalContextProvider({children}) {
   const [isNextPhrase, setNextPhrase] = useState(false);
   const [phrasesArr, setPhrasesArr] = useState([]);
   const [isLearnAction, setIsLearnAction] = useState(true);
+  const [isCorrect, setIsCorrect] = useState(false);
+  const [isWrong, setIsWrong] = useState(false);
 
   function randomisedDataToDisplay(phrases) {
     const randomPhrases = phrases[Math.floor(Math.random() * phrases.length)];
@@ -40,15 +42,27 @@ function GlobalContextProvider({children}) {
   }
 
   function toogleNextButon() {
-    setNextPhrase(!isNextPhrase);
+    // setNextPhrase(!isNextPhrase);
   }
 
   function handleBtn() {
     setIsLearnAction(!isLearnAction);
   }
 
-  function handleActionButton(event) {
+  const correctAnswer = phrasesArr.answers;
+  console.log(correctAnswer);
+
+  function handleActionButton(name) {
+    setNextPhrase(!isNextPhrase);
     const correctAnswer = phrasesArr.answers;
+    if (correctAnswer === name) {
+      setIsCorrect(true);
+    } else if (correctAnswer !== name) {
+      setIsWrong(true);
+    } else {
+      setIsCorrect(false);
+      setIsWrong(false);
+    }
   }
 
   return (
@@ -60,9 +74,11 @@ function GlobalContextProvider({children}) {
         isNextPhrase,
         phrasesArr,
         isLearnAction,
+        isWrong,
+        isCorrect,
         toogleMode,
         toogleLang,
-        toogleNextButon,
+        // toogleNextButon,
         randomisedDataToDisplay,
         handleActionButton,
         handleBtn,

@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import ActionButton from '../ActionButton/ActionButton';
 import {Context} from '../../util/GlobalContext';
@@ -23,19 +23,14 @@ export const style = StyleSheet.create({
   },
 });
 
-export default function ListItem({name, onPress}) {
-  const {isLightMode, handleBtn, isLearnAction} = useContext(Context);
-  // console.log(isLearnAction);
+export default function ListItem({name}) {
+  const {isLightMode} = useContext(Context);
+
   return (
-    <View style={style.container}>
+    <View>
       <Text style={(style.text, {color: isLightMode ? '#111827' : '#FFFFFF'})}>
         {name}
       </Text>
-      {/* {isLearnAction ? (
-        <ActionButton buttonLabel={'Learn'} />
-      ) : (
-        <ActionButton buttonLabel={'Pick'} />
-      )} */}
     </View>
   );
 }

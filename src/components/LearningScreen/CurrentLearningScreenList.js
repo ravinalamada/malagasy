@@ -30,7 +30,6 @@ export default function CurrentLearningScreen() {
     toogleLang,
     toogleMode,
     randomisedDataToDisplay,
-    toogleNextButon,
   } = useContext(Context);
 
   const {catName} = useParams();

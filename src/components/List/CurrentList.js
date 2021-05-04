@@ -11,7 +11,7 @@ import SectionHeading from '../SectionHeading/SectionHeading';
 import {Context} from '../../util/GlobalContext';
 
 export default function CurrentList() {
-  const {category, isEn, isLightMode, handleBtn} = useContext(Context);
+  const {category, isEn, isLightMode} = useContext(Context);
 
   const styles = StyleSheet.create({
     separator: {
@@ -35,10 +35,7 @@ export default function CurrentList() {
             <SectionHeading title={section.title} />
           )}
           renderItem={({item}) => (
-            <List
-              name={isEn ? item.name.en : item.name.mg}
-              onRowPress={() => handleBtn()}
-            />
+            <List name={isEn ? item.name.en : item.name.mg} />
           )}
           KeyExtractor={item => item.id}
           ItemSeparatorComponent={() => <View style={styles.separator} />}

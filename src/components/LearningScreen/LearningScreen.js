@@ -5,10 +5,13 @@ import ActionButton from '../ActionButton/ActionButton';
 import {Context} from '../../util/GlobalContext';
 
 export default function LearningScreen({name, onRowPress}) {
-  const {isLightMode, phrasesArr} = useContext(Context);
-  // var btn = 'Pick';
-  // let Button = btnRef.current;
-  const btnRef = useRef(null);
+  const {
+    isLightMode,
+    phrasesArr,
+    handleActionButton,
+    isWrong,
+    isCorrect,
+  } = useContext(Context);
   const correctAnswer = phrasesArr.answers.name.en;
 
   function handleBtns() {
@@ -28,7 +31,10 @@ export default function LearningScreen({name, onRowPress}) {
       }}>
       <View style={style.container}>
         <ListItem name={name} />
-        <ActionButton buttonLabel={'Pick'} onPress={handleBtns} />
+        <ActionButton
+          buttonLabel={'Pick'}
+          onPress={() => handleActionButton(name)}
+        />
       </View>
     </View>
   );

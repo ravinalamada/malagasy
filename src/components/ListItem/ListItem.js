@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import ActionButton from '../ActionButton/ActionButton';
 import {Context} from '../../util/GlobalContext';
 
-const style = StyleSheet.create({
+export const style = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -23,22 +23,19 @@ const style = StyleSheet.create({
   },
 });
 
-export default function ListItem({name}) {
-  const {isLightMode, toogleNextButon} = useContext(Context);
-
+export default function ListItem({name, onPress}) {
+  const {isLightMode, handleBtn, isLearnAction} = useContext(Context);
+  // console.log(isLearnAction);
   return (
     <View style={style.container}>
       <Text style={(style.text, {color: isLightMode ? '#111827' : '#FFFFFF'})}>
         {name}
       </Text>
-      <ActionButton
-        buttonLabel={
-          name === 'Food' || name === 'Sakafo' || name === 'Select a category'
-            ? 'Learn'
-            : 'Pick'
-        }
-        onPress={toogleNextButon}
-      />
+      {/* {isLearnAction ? (
+        <ActionButton buttonLabel={'Learn'} />
+      ) : (
+        <ActionButton buttonLabel={'Pick'} />
+      )} */}
     </View>
   );
 }

@@ -1,12 +1,12 @@
 import React, {useContext} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, TouchableHighlight, View} from 'react-native';
 import {Link} from 'react-router-native';
-import ListItem from '../ListItem/ListItem';
+import ListItem, {style} from '../ListItem/ListItem';
+import ActionButton from '../ActionButton/ActionButton';
 import {Context} from '../../util/GlobalContext';
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFFFFF',
     borderRadius: 3,
     borderColor: '#E5E5E5',
     borderStyle: 'solid',
@@ -17,17 +17,24 @@ const style = StyleSheet.create({
   },
 });
 
-export default function List({name}) {
+export default function List({name, onRowPress}) {
   const {isLightMode} = useContext(Context);
   return (
-    <View
+    <TouchableHighlight
       style={
-        (style.container,
+        (styles.container,
         {backgroundColor: isLightMode ? '#FFFFFF' : '#111827'})
       }>
-      <Link to={`/${name}`}>
+      <View style={style.container}>
         <ListItem name={name} />
-      </Link>
-    </View>
+        <Link to={`/${name}`} component={ActionButton} buttonLabel={'Learn'} />
+      </View>
+
+      {/* <Link to={`/${name}`}>
+        <ListItem onPress={onRowPress} name={name}>
+          <ActionButton buttonLabel={'Learn'} />
+        </ListItem>
+      </Link> */}
+    </TouchableHighlight>
   );
 }

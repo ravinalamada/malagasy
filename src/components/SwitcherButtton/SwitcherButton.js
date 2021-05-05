@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {StyleSheet, TouchableHighlight, View, Text} from 'react-native';
 import SwitcherIcon from '../assets/Icons/switcher-icon.svg';
-import {Contex, Context} from '../../util/GlobalContext';
+import {Context} from '../../util/GlobalContext';
 const styles = StyleSheet.create({
   button: {
     backgroundColor: '#06B6D4',

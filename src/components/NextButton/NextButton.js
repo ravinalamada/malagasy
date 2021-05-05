@@ -10,6 +10,7 @@ export const buttonStyle = StyleSheet.create({
     borderRadius: 30,
     paddingTop: 11,
     paddingBottom: 10,
+    marginTop: 66,
   },
   disabledButton: {
     width: 90,

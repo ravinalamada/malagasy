@@ -6,9 +6,9 @@ import {
   KeyboardAvoidingView,
   View,
 } from 'react-native';
-import List from './List/List';
-import SectionHeading from './SectionHeading/SectionHeading';
-import {Context} from '../util/GlobalContext';
+import List from './List';
+import SectionHeading from '../SectionHeading/SectionHeading';
+import {Context} from '../../util/GlobalContext';
 
 export default function CurrentList() {
   const {category, isEn, isLightMode} = useContext(Context);

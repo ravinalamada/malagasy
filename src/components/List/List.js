@@ -1,10 +1,12 @@
 import React, {useContext} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Link} from 'react-router-native';
-import ListItem from '../ListItem/ListItem';
+import ListItem, {style} from '../ListItem/ListItem';
+import ActionButton from '../ActionButton/ActionButton';
 import {Context} from '../../util/GlobalContext';
+import actionButton from '../ActionButton/ActionButton';
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FFFFFF',
     borderRadius: 3,
@@ -22,12 +24,13 @@ export default function List({name}) {
   return (
     <View
       style={
-        (style.container,
+        (styles.container,
         {backgroundColor: isLightMode ? '#FFFFFF' : '#111827'})
       }>
-      <Link to={`/${name}`}>
+      <View style={style.container}>
         <ListItem name={name} />
-      </Link>
+        <Link to={`/${name}`} component={actionButton} buttonLabel={'Learn'} />
+      </View>
     </View>
   );
 }

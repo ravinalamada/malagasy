@@ -99,9 +99,9 @@ export default function CurrentLearningScreen() {
             <SectionHeading title={section.title} />
           )}
           renderItem={({item}) => (
-            <LearningScreen name={isEn ? item.name.en : item.name.mg} />
+            <LearningScreen name={isEn ? item.en : item.mg} />
           )}
-          KeyExtractor={item => item.id}
+          KeyExtractor={item => item}
           ItemSeparatorComponent={() => <View style={styles.separator} />}
         />
       </KeyboardAvoidingView>

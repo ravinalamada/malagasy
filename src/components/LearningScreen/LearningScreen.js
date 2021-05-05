@@ -12,16 +12,15 @@ export default function LearningScreen({name, onRowPress}) {
     isWrong,
     isCorrect,
   } = useContext(Context);
-  const correctAnswer = phrasesArr.answers.name.en;
 
-  function handleBtns() {
-    let btn = btnRef.current;
-    if (correctAnswer !== name) {
-      btn = 'Correct';
-      console.log(btn);
-    }
+  let label;
 
-    return btn;
+  if (isCorrect) {
+    label = 'Correct';
+  } else if (isWrong) {
+    label = 'Wrong';
+  } else {
+    label = 'Pick';
   }
 
   return (
@@ -32,7 +31,7 @@ export default function LearningScreen({name, onRowPress}) {
       <View style={style.container}>
         <ListItem name={name} />
         <ActionButton
-          buttonLabel={'Pick'}
+          buttonLabel={label}
           onPress={() => handleActionButton(name)}
         />
       </View>

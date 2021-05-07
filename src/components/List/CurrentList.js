@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import List from './List';
-import SectionHeading from '../SectionHeading/SectionHeading';
+import SectionHeading, {style} from '../SectionHeading/SectionHeading';
 import {Context} from '../../util/GlobalContext';
 
 export default function CurrentList() {
@@ -32,7 +32,10 @@ export default function CurrentList() {
             },
           ]}
           renderSectionHeader={({section}) => (
-            <SectionHeading title={section.title} />
+            <SectionHeading
+              style={isLightMode ? style.lightModeText : style.darkModeText}
+              title={section.title}
+            />
           )}
           renderItem={({item}) => (
             <List name={isEn ? item.name.en : item.name.mg} />

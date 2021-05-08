@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
   },
 });
 
-export default function ({onPress, lang}) {
+export default function SwitcherButton({onPress, lang}) {
   return (
     <TouchableHighlight onPress={onPress}>
       {lang ? (

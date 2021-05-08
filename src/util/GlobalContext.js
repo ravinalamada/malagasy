@@ -10,8 +10,6 @@ function GlobalContextProvider({children}) {
   const [isNextPhrase, setNextPhrase] = useState(false);
   const [phrasesArr, setPhrasesArr] = useState([]);
   const [isLearnAction, setIsLearnAction] = useState(true);
-  const [isCorrect, setIsCorrect] = useState(false);
-  const [isWrong, setIsWrong] = useState(false);
   const [isButtonLabel, setIsButtonLabel] = useState(true);
   const [buttonLabel, setButtonLabel] = useState('Pick');
 
@@ -43,10 +41,6 @@ function GlobalContextProvider({children}) {
     setIsLightMode(!isLightMode);
   }
 
-  function handleBtn() {
-    setIsLearnAction(!isLearnAction);
-  }
-
   function toogleButtonLabel() {
     setIsButtonLabel(!isButtonLabel);
   }
@@ -71,16 +65,12 @@ function GlobalContextProvider({children}) {
         isLightMode,
         isNextPhrase,
         phrasesArr,
-        isLearnAction,
-        isWrong,
-        isCorrect,
         isButtonLabel,
         buttonLabel,
         toogleMode,
         toogleLang,
         randomisedDataToDisplay,
         handleActionButton,
-        handleBtn,
         toogleButtonLabel,
       }}>
       {children}

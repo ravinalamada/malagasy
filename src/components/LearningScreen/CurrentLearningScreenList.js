@@ -11,7 +11,7 @@ import {useParams} from 'react-router-dom';
 import LearningScreen from './LearningScreen';
 import SectionHeadingApp from '../SectionHeading/SectionHeadingApp';
 import ToolButtom from '../ToolButton/ToolButton';
-import SwitcherButtonApp from '../SwitcherButtton/SwitcherButtonApp';
+import SwitcherButton from '../SwitcherButtton/SwitcherButton';
 import PhraseTextArea from '../PhraseTextarea/PhraseTextarea';
 import NextButton from '../NextButton/NextButton';
 import {style} from '../Home/Home';
@@ -34,7 +34,9 @@ export default function CurrentLearningScreen() {
   } = useContext(Context);
 
   const {catName} = useParams();
-  const catNameToDisplay = category.find(cat => cat.name.en === catName);
+  const catNameToDisplay = category.find(
+    cat => cat.name.en === catName || cat.name.mg === catName,
+  );
   const catId = catNameToDisplay.phrasesIds;
   const str = catId[0];
   const delLastChar = str.substring(0, 5);
@@ -78,7 +80,7 @@ export default function CurrentLearningScreen() {
             onPress={toogleButtonLabel}
           />
           <ToolButtom buttonLabel={'mode'} onPress={toogleMode} />
-          <SwitcherButtonApp onPress={toogleLang} />
+          <SwitcherButton onPress={toogleLang} />
         </View>
         <SectionHeadingApp
           title={

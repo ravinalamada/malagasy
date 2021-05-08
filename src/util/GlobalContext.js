@@ -9,7 +9,6 @@ function GlobalContextProvider({children}) {
   const [isLightMode, setIsLightMode] = useState(true);
   const [isNextPhrase, setNextPhrase] = useState(false);
   const [phrasesArr, setPhrasesArr] = useState([]);
-  const [isLearnAction, setIsLearnAction] = useState(true);
   const [isButtonLabel, setIsButtonLabel] = useState(true);
   const [buttonLabel, setButtonLabel] = useState('Pick');
 

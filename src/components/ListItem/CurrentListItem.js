@@ -4,16 +4,14 @@ import ListItemApp from './ListItemApp';
 import {Context} from '../../util/GlobalContext';
 
 export default function CurrentListItem() {
-  const {category, toogleNextButon} = useContext(Context);
+  const {category} = useContext(Context);
 
   return (
     <SafeAreaView>
       <KeyboardAvoidingView>
         <SectionList
           sections={[{title: 'Food', data: category}]}
-          renderItem={({item}) => (
-            <ListItemApp name={item.name} onPress={toogleNextButon} />
-          )}
+          renderItem={({item}) => <ListItemApp name={item.name} />}
           KeyExtractor={item => item.id}
         />
       </KeyboardAvoidingView>

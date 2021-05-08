@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {View, Text} from 'react-native';
 import {Link} from 'react-router-native';
 import ActionButton from '../ActionButton/ActionButton';
 import {style} from './ListItem';

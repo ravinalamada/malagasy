@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
 import {
-  StyleSheet,
   SectionList,
   SafeAreaView,
   KeyboardAvoidingView,
@@ -11,15 +10,7 @@ import SectionHeadingApp from '../SectionHeading/SectionHeadingApp';
 import {Context} from '../../util/GlobalContext';
 
 export default function CurrentList() {
-  const {category, isEn, isLightMode} = useContext(Context);
-
-  const styles = StyleSheet.create({
-    separator: {
-      flex: 1,
-      height: 1,
-      backgroundColor: isLightMode ? '#E5E5E5' : '#1F232C',
-    },
-  });
+  const {category, isEn} = useContext(Context);
 
   return (
     <SafeAreaView>
@@ -32,13 +23,14 @@ export default function CurrentList() {
             },
           ]}
           renderSectionHeader={({section}) => (
-            <SectionHeadingApp title={section.title} />
+            <View style={{marginBottom: 15}}>
+              <SectionHeadingApp title={section.title} />
+            </View>
           )}
           renderItem={({item}) => (
             <ListApp name={isEn ? item.name.en : item.name.mg} />
           )}
           KeyExtractor={item => item.id}
-          ItemSeparatorComponent={() => <View style={styles.separator} />}
         />
       </KeyboardAvoidingView>
     </SafeAreaView>

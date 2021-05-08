@@ -20,7 +20,7 @@ function Heading() {
       renderSectionHeader={({section}) => (
         <SectionHeading title={section.title} />
       )}
-      renderItem={item => null}
+      renderItem={() => null}
       KeyExtractor={item => item.id}
     />
   );

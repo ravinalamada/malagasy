@@ -1,13 +1,16 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import ActionButton from '../ActionButton/ActionButton';
-import {Context} from '../../util/GlobalContext';
 
 export const style = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    borderRadius: 3,
+    borderColor: '#E5E5E5',
+    borderStyle: 'solid',
+    borderWidth: 1,
     paddingLeft: 16,
     paddingTop: 17,
     paddingBottom: 17,
@@ -24,13 +27,12 @@ export const style = StyleSheet.create({
 });
 
 export default function ListItem({name}) {
-  const {isLightMode} = useContext(Context);
-
   return (
-    <View>
-      <Text style={(style.text, {color: isLightMode ? '#111827' : '#FFFFFF'})}>
-        {name}
-      </Text>
+    <View style={style.container}>
+      <Text style={style.text}>{name}</Text>
+      <ActionButton
+        buttonLabel={name === 'Food' || name === 'Sakafo' ? 'Pick' : 'Learn'}
+      />
     </View>
   );
 }

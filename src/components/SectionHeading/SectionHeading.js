@@ -1,35 +1,30 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
-import {Context} from '../../util/GlobalContext';
 
 export const style = StyleSheet.create({
   lightModeText: {
     fontFamily: 'Inter',
+    fontStyle: 'normal',
     fontSize: 18,
     lineHeight: 22,
     fontWeight: '600',
-    paddingBottom: 15,
-    paddingTop: 56,
     color: '#111827',
+    paddingRight: 5,
   },
   darkModeText: {
     fontFamily: 'Inter',
+    fontStyle: 'normal',
     fontSize: 18,
     lineHeight: 22,
     fontWeight: '600',
-    paddingBottom: 15,
-    paddingTop: 56,
     color: '#FFFFFF',
   },
 });
 
 export default function SectionHeading({title}) {
-  const {isLightMode} = useContext(Context);
   return (
     <View>
-      <Text style={isLightMode ? style.lightModeText : style.darkModeText}>
-        {title}
-      </Text>
+      <Text style={style.lightModeText}>{title}</Text>
     </View>
   );
 }

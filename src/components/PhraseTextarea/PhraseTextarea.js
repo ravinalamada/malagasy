@@ -3,7 +3,6 @@ import {TextInput, SafeAreaView, StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     height: 100,
-    marginVertical: 0,
     marginHorizontal: 'auto',
     backgroundColor: '#fff',
     justifyContent: 'center',
@@ -11,6 +10,8 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderColor: '#E5E5E5',
     borderWidth: 1,
+    marginTop: 15,
+    marginBottom: 37,
   },
   input: {
     color: '#111827',

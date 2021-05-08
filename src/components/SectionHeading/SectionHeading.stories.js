@@ -13,13 +13,14 @@ const style = StyleSheet.create({
 
 function Heading() {
   const [category, setCategory] = useState([{name: 'food', id: '1'}]);
+
   return (
     <SectionList
       sections={[{title: 'Select a category:', data: category}]}
       renderSectionHeader={({section}) => (
         <SectionHeading title={section.title} />
       )}
-      renderItem={item => null}
+      renderItem={() => null}
       KeyExtractor={item => item.id}
     />
   );
@@ -29,7 +30,10 @@ function SecondHeading() {
   const [learntData, setLearntData] = useState([{name: 'number', id: '2'}]);
   return (
     <SectionList
-      sections={[{title: 'Learnt', data: learntData}]}
+      sections={[
+        {title: 'Learnt', data: learntData},
+        {title: 'secondHeading', data: learntData},
+      ]}
       renderSectionHeader={({section}) => (
         <SectionHeading title={section.title} />
       )}

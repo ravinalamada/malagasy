@@ -5,20 +5,35 @@ import {
   SafeAreaView,
   KeyboardAvoidingView,
   View,
+  Text,
 } from 'react-native';
 import {Link} from 'react-router-native';
 import {useParams} from 'react-router-dom';
 import LearningScreen from './LearningScreen';
-import SectionHeading from '../SectionHeading/SectionHeading';
+import SectionHeadingApp from '../SectionHeading/SectionHeadingApp';
 import ToolButtom from '../ToolButton/ToolButton';
 import SwitcherButton from '../SwitcherButtton/SwitcherButton';
 import PhraseTextArea from '../PhraseTextarea/PhraseTextarea';
 import NextButton from '../NextButton/NextButton';
-import {style} from '../Home/Home';
+import {homeStyle} from '../Home/Home';
+import {style} from '../ListItem/ListItem';
 import {Context} from '../../util/GlobalContext';
 
 const phrasesData = require('../../data/phrases.json');
 const phrasesList = phrasesData.phrases;
+const styles = StyleSheet.create({
+  button: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginBottom: 30,
+  },
+});
 
 export default function CurrentLearningScreen() {
   const {
@@ -30,10 +45,13 @@ export default function CurrentLearningScreen() {
     toogleLang,
     toogleMode,
     randomisedDataToDisplay,
+    toogleButtonLabel,
   } = useContext(Context);
 
   const {catName} = useParams();
-  const catNameToDisplay = category.find(cat => cat.name.en === catName);
+  const catNameToDisplay = category.find(
+    cat => cat.name.en === catName || cat.name.mg === catName,
+  );
   const catId = catNameToDisplay.phrasesIds;
   const str = catId[0];
   const delLastChar = str.substring(0, 5);
@@ -52,36 +70,29 @@ export default function CurrentLearningScreen() {
     return null;
   }
 
-  const styles = StyleSheet.create({
-    button: {
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    separator: {
-      flex: 1,
-      height: 1,
-      backgroundColor: isLightMode ? '#E5E5E5' : '#1F232C',
-    },
-  });
-
   return (
     <SafeAreaView
-      style={isLightMode ? style.lightModeContainer : style.darkModeContainer}>
+      style={
+        isLightMode ? homeStyle.lightModeContainer : homeStyle.darkModeContainer
+      }>
       <KeyboardAvoidingView>
-        <View style={style.buttonContainer}>
-          <Link to="/" component={ToolButtom} buttonLabel={'back'} />
+        <View style={homeStyle.buttonContainer}>
+          <Link
+            to="/"
+            component={ToolButtom}
+            buttonLabel={'back'}
+            onPress={toogleButtonLabel}
+          />
           <ToolButtom buttonLabel={'mode'} onPress={toogleMode} />
           <SwitcherButton onPress={toogleLang} />
         </View>
-        <SectionHeading
-          title={
-            isEn
-              ? `Category: ${catNameToDisplay.name.en}`
-              : `Karazana: ${catNameToDisplay.name.mg}`
-          }
-        />
-        <SectionHeading title={isEn ? `The phares:` : 'fehezanteny:'} />
+        <View style={styles.container}>
+          <SectionHeadingApp title={isEn ? 'Category:' : 'Karazana:'} />
+          <Text style={style.text}>
+            {isEn ? catNameToDisplay.name.en : catNameToDisplay.name.mg}
+          </Text>
+        </View>
+        <SectionHeadingApp title={isEn ? `The phares:` : 'fehezanteny:'} />
         <PhraseTextArea
           editable={false}
           phrase={
@@ -96,13 +107,14 @@ export default function CurrentLearningScreen() {
             },
           ]}
           renderSectionHeader={({section}) => (
-            <SectionHeading title={section.title} />
+            <View style={{marginBottom: 15}}>
+              <SectionHeadingApp title={section.title} />
+            </View>
           )}
           renderItem={({item}) => (
-            <LearningScreen name={isEn ? item.name.en : item.name.mg} />
+            <LearningScreen name={isEn ? item.en : item.mg} />
           )}
-          KeyExtractor={item => item.id}
-          ItemSeparatorComponent={() => <View style={styles.separator} />}
+          KeyExtractor={item => (isEn ? item.en : item.mg)}
         />
       </KeyboardAvoidingView>
       <View style={styles.button}>

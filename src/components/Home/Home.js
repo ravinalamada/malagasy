@@ -6,7 +6,7 @@ import SwitcherButton from '../SwitcherButtton/SwitcherButton';
 import CurrentList from '../List/CurrentList';
 import {Context} from '../../util/GlobalContext';
 
-export const style = StyleSheet.create({
+export const homeStyle = StyleSheet.create({
   darkModeContainer: {
     backgroundColor: '#1F232C',
     paddingTop: 35,
@@ -25,6 +25,7 @@ export const style = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    paddingBottom: 56,
   },
 });
 
@@ -35,9 +36,11 @@ const Home = () => {
     <Link to="/">
       <View
         style={
-          isLightMode ? style.lightModeContainer : style.darkModeContainer
+          isLightMode
+            ? homeStyle.lightModeContainer
+            : homeStyle.darkModeContainer
         }>
-        <View style={style.buttonContainer}>
+        <View style={homeStyle.buttonContainer}>
           <ToolButtom buttonLabel={'add'} />
           <SwitcherButton onPress={toogleLang} />
           <ToolButtom buttonLabel={'seen'} />

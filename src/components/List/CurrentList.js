@@ -6,8 +6,8 @@ import {
   KeyboardAvoidingView,
   View,
 } from 'react-native';
-import List from './List';
-import SectionHeading, {style} from '../SectionHeading/SectionHeading';
+import ListApp from './ListApp';
+import SectionHeadingApp from '../SectionHeading/SectionHeadingApp';
 import {Context} from '../../util/GlobalContext';
 
 export default function CurrentList() {
@@ -32,13 +32,10 @@ export default function CurrentList() {
             },
           ]}
           renderSectionHeader={({section}) => (
-            <SectionHeading
-              style={isLightMode ? style.lightModeText : style.darkModeText}
-              title={section.title}
-            />
+            <SectionHeadingApp title={section.title} />
           )}
           renderItem={({item}) => (
-            <List name={isEn ? item.name.en : item.name.mg} />
+            <ListApp name={isEn ? item.name.en : item.name.mg} />
           )}
           KeyExtractor={item => item.id}
           ItemSeparatorComponent={() => <View style={styles.separator} />}

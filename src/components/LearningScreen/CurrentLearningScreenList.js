@@ -9,9 +9,9 @@ import {
 import {Link} from 'react-router-native';
 import {useParams} from 'react-router-dom';
 import LearningScreen from './LearningScreen';
-import SectionHeading from '../SectionHeading/SectionHeading';
+import SectionHeadingApp from '../SectionHeading/SectionHeadingApp';
 import ToolButtom from '../ToolButton/ToolButton';
-import SwitcherButton from '../SwitcherButtton/SwitcherButton';
+import SwitcherButtonApp from '../SwitcherButtton/SwitcherButtonApp';
 import PhraseTextArea from '../PhraseTextarea/PhraseTextarea';
 import NextButton from '../NextButton/NextButton';
 import {style} from '../Home/Home';
@@ -30,6 +30,7 @@ export default function CurrentLearningScreen() {
     toogleLang,
     toogleMode,
     randomisedDataToDisplay,
+    toogleButtonLabel,
   } = useContext(Context);
 
   const {catName} = useParams();
@@ -70,18 +71,23 @@ export default function CurrentLearningScreen() {
       style={isLightMode ? style.lightModeContainer : style.darkModeContainer}>
       <KeyboardAvoidingView>
         <View style={style.buttonContainer}>
-          <Link to="/" component={ToolButtom} buttonLabel={'back'} />
+          <Link
+            to="/"
+            component={ToolButtom}
+            buttonLabel={'back'}
+            onPress={toogleButtonLabel}
+          />
           <ToolButtom buttonLabel={'mode'} onPress={toogleMode} />
-          <SwitcherButton onPress={toogleLang} />
+          <SwitcherButtonApp onPress={toogleLang} />
         </View>
-        <SectionHeading
+        <SectionHeadingApp
           title={
             isEn
               ? `Category: ${catNameToDisplay.name.en}`
               : `Karazana: ${catNameToDisplay.name.mg}`
           }
         />
-        <SectionHeading title={isEn ? `The phares:` : 'fehezanteny:'} />
+        <SectionHeadingApp title={isEn ? `The phares:` : 'fehezanteny:'} />
         <PhraseTextArea
           editable={false}
           phrase={
@@ -96,7 +102,7 @@ export default function CurrentLearningScreen() {
             },
           ]}
           renderSectionHeader={({section}) => (
-            <SectionHeading title={section.title} />
+            <SectionHeadingApp title={section.title} />
           )}
           renderItem={({item}) => (
             <LearningScreen name={isEn ? item.en : item.mg} />

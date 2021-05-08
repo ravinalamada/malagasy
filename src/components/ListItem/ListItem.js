@@ -1,8 +1,6 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
-import {Link} from 'react-router-native';
 import ActionButton from '../ActionButton/ActionButton';
-import {Context} from '../../util/GlobalContext';
 
 export const style = StyleSheet.create({
   container: {
@@ -25,43 +23,12 @@ export const style = StyleSheet.create({
 });
 
 export default function ListItem({name}) {
-  const {
-    isLightMode,
-    label,
-    toogleLabel,
-    handleActionButton,
-    isWrong,
-    isCorrect,
-  } = useContext(Context);
-
-  let pickedButtonLabel;
-
-  if (isCorrect) {
-    pickedButtonLabel = 'Correct';
-  } else if (isWrong) {
-    pickedButtonLabel = 'Wrong';
-  } else {
-    pickedButtonLabel = 'Pick';
-  }
-
   return (
     <View style={style.container}>
-      <Text style={(style.text, {color: isLightMode ? '#111827' : '#FFFFFF'})}>
-        {name}
-      </Text>
-      {label ? (
-        <Link
-          to={`/${name}`}
-          component={ActionButton}
-          onPress={() => toogleLabel(name)}
-          buttonLabel={'Learn'}
-        />
-      ) : (
-        <ActionButton
-          buttonLabel={pickedButtonLabel}
-          onPress={() => handleActionButton(name)}
-        />
-      )}
+      <Text style={style.text}>{name}</Text>
+      <ActionButton
+        buttonLabel={name === 'Food' || name === 'Sakafo' ? 'Pick' : 'Learn'}
+      />
     </View>
   );
 }

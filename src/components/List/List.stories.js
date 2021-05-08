@@ -34,7 +34,7 @@ function DisplayEnCat() {
           renderSectionHeader={({section}) => (
             <SectionHeading title={section.title} />
           )}
-          renderItem={({item, index}) => <List name={item} />}
+          renderItem={({item}) => <List name={item} />}
           KeyExtractor={item => item.id}
         />
       </KeyboardAvoidingView>
@@ -61,5 +61,5 @@ function DisplayMalCat() {
 
 storiesOf('List', module)
   .addDecorator(getStory => <View style={style.container}>{getStory()}</View>)
-  .add('English categories name', () => <DisplayEnCat />)
-  .add('Malagasy categories name', () => <DisplayMalCat />);
+  .add('English categories list', () => <DisplayEnCat />)
+  .add('Malagasy categories list', () => <DisplayMalCat />);

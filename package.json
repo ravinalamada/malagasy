@@ -32,6 +32,7 @@
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
     "@storybook/addon-actions": "^5.3",
+    "@storybook/addon-contexts": "^5.3.21",
     "@storybook/addon-knobs": "^6.2.8",
     "@storybook/addon-links": "^5.3",
     "@storybook/addon-ondevice-actions": "^5.3.23",
@@ -45,7 +46,8 @@
     "metro-react-native-babel-preset": "^0.64.0",
     "react-dom": "17.0.1",
     "react-native-storybook-loader": "^2.0.2",
-    "react-test-renderer": "17.0.1"
+    "react-test-renderer": "17.0.1",
+    "storybook-addon-react-context": "^1.1.2"
   },
   "jest": {
     "preset": "react-native"

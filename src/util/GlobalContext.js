@@ -1,4 +1,4 @@
-import React, {useState, useEffect, createContext} from 'react';
+import React, {useState, createContext} from 'react';
 const categoriesData = require('../data/categories.json');
 const categoriesList = categoriesData.categories;
 const Context = createContext();
@@ -12,6 +12,8 @@ function GlobalContextProvider({children}) {
   const [isLearnAction, setIsLearnAction] = useState(true);
   const [isCorrect, setIsCorrect] = useState(false);
   const [isWrong, setIsWrong] = useState(false);
+  const [isButtonLabel, setIsButtonLabel] = useState(true);
+  const [buttonLabel, setButtonLabel] = useState('Pick');
 
   function randomisedDataToDisplay(phrases) {
     const randomAnwers = phrases[Math.floor(Math.random() * phrases.length)];
@@ -29,9 +31,8 @@ function GlobalContextProvider({children}) {
     };
 
     setPhrasesArr(phrasesObj);
-    setNextPhrase(!isNextPhrase);
-    setIsCorrect(false);
-    setIsWrong(false);
+    setNextPhrase(false);
+    setButtonLabel('Pick');
   }
 
   function toogleLang() {
@@ -46,17 +47,20 @@ function GlobalContextProvider({children}) {
     setIsLearnAction(!isLearnAction);
   }
 
+  function toogleButtonLabel() {
+    setIsButtonLabel(!isButtonLabel);
+  }
+
   function handleActionButton(name) {
-    setNextPhrase(!isNextPhrase);
     const correctAnswer = phrasesArr.answers;
     if (correctAnswer.name.en === name || correctAnswer.name.mg === name) {
-      setIsCorrect(!isCorrect);
+      setButtonLabel('Correct');
     } else if (correctAnswer.name.en !== name) {
-      setIsWrong(!isWrong);
+      setButtonLabel('Wrong');
     } else {
-      setIsCorrect(false);
-      setIsWrong(false);
+      setButtonLabel('Pick');
     }
+    setNextPhrase(!isNextPhrase);
   }
 
   return (
@@ -70,11 +74,14 @@ function GlobalContextProvider({children}) {
         isLearnAction,
         isWrong,
         isCorrect,
+        isButtonLabel,
+        buttonLabel,
         toogleMode,
         toogleLang,
         randomisedDataToDisplay,
         handleActionButton,
         handleBtn,
+        toogleButtonLabel,
       }}>
       {children}
     </Context.Provider>

@@ -3,6 +3,8 @@ import {StyleSheet, TouchableHighlight, Text} from 'react-native';
 import {styles} from '../ActionButton/ActionButton';
 
 export const buttonStyle = StyleSheet.create({
+  // lots of duplication, consider merging the style option
+  // Font-size too small
   enabledButton: {
     width: 90,
     height: 40,

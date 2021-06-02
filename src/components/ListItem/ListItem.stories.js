@@ -18,7 +18,7 @@ const style = StyleSheet.create({
     marginRight: 35,
   },
 });
-
+// This is nicely done but could be much simpler, Storybooks purpose is to show the look of components, the content does not have to be linked to the apps functionality
 function DisplayEnCat() {
   const [categories, setCategories] = useState([
     {name: 'Food', id: '#1111'},

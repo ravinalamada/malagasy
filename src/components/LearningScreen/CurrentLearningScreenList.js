@@ -92,7 +92,7 @@ export default function CurrentLearningScreen() {
             {isEn ? catNameToDisplay.name.en : catNameToDisplay.name.mg}
           </Text>
         </View>
-        <SectionHeadingApp title={isEn ? `The phares:` : 'fehezanteny:'} />
+        <SectionHeadingApp title={isEn ? `The phrases:` : 'fehezanteny:'} />
         <PhraseTextArea
           editable={false}
           phrase={

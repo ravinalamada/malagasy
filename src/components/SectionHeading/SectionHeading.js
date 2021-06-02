@@ -20,7 +20,7 @@ export const style = StyleSheet.create({
     color: '#FFFFFF',
   },
 });
-
+// I appreciate that you want to plan ahead for darkmode, but we should never have useless code in the codebase.
 export default function SectionHeading({title}) {
   return (
     <View>

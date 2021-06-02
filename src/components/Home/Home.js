@@ -28,7 +28,7 @@ export const homeStyle = StyleSheet.create({
     paddingBottom: 56,
   },
 });
-
+// This should be in a separate screens folder, not the components
 const Home = () => {
   const {isLightMode, toogleLang, toogleMode} = useContext(Context);
 

@@ -31,6 +31,7 @@ export const styles = StyleSheet.create({
 });
 
 export default function SwitcherButton({onPress, lang}) {
+  // the language switcher should not know about the languages it will show; it is language-agnostic. Rather, pass the primary and secondary language as props
   return (
     <TouchableHighlight onPress={onPress}>
       {lang ? (

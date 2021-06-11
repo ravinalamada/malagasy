@@ -26,6 +26,7 @@ export const styles = StyleSheet.create({
 });
 
 function changeButtonIcons(buttonLabel) {
+  // You don't need to declare button, just return the component directly like: return <BackIcon ...>
   let Button;
   if (buttonLabel === 'mode') {
     return (Button = <ModeIcon style={styles.Icon} />);
@@ -40,6 +41,13 @@ function changeButtonIcons(buttonLabel) {
   }
   return Button;
 }
+// That many if statments are not elegant, this is something I learned in my bootcamp: Declare an object with all the possiblilities annd then access the respective property:
+// const Icon = {
+//   back: () => <BackIcon style={styles.Icon} />,
+//   seen: () => <SeenIcon style={styles.Icon} />,
+// };
+// Access it with: Icon.buttonLabel
+//You might not evewn need the arrow functions.
 
 export default function actionButton({onPress, buttonLabel}) {
   return (

@@ -27,6 +27,7 @@ export const style = StyleSheet.create({
 });
 
 export default function ListItem({name}) {
+  // The action button version should be a prop as well
   return (
     <View style={style.container}>
       <Text style={style.text}>{name}</Text>

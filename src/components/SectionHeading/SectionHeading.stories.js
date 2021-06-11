@@ -10,7 +10,7 @@ const style = StyleSheet.create({
     marginBottom: 17,
   },
 });
-
+// This is way more complicated than it needs to be
 function Heading() {
   const [category, setCategory] = useState([{name: 'food', id: '1'}]);
 
